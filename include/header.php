@@ -15,9 +15,6 @@
 </svg>]</a></li>
                 <?php else:?>
                 <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
-                
-
-
                 <li class="nav-item"><a href="signup.php" class="nav-link">Ragister</a></li>
                 <?php endif; ?>
             </ul>
@@ -54,7 +51,7 @@
             $puts = [
                         'q_title' => $_POST['title'],
                         'q_content' => $_POST['content'],
-                        'q_by' => 1,
+                        'q_by' => $datawork->getuserID(),
                         'q_status' => 1
 
             ];

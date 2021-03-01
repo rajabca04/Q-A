@@ -74,6 +74,17 @@ class Work{
     }
 
 
+    public function getuserID(){
+        $log = $_SESSION['user'];
+        $run = $this ->connect->query("select * from account where email='$log'");
+
+        $data = $run ->fetch_array();
+
+        return $data['id'];
+
+    }
+
+
 }
 //object creation
 $datawork = new Work();

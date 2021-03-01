@@ -26,7 +26,7 @@ if(!isset($_SESSION['user'])){
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <form action="">
-                        <input type="text" size="50" placeholder="Search here" class="form-control shadow form-control-lg">
+                        <input type="text" size="50" placeholder="Search here" class="form-control shadow form-control-lg border-dark">
                         <input type="submit" value="search" class="btn btn-success btn-lg mt-2 ">
                         <input type="submit" value="View all" class="btn btn-dark btn-lg mt-2 ">
                     </form>
@@ -39,11 +39,11 @@ if(!isset($_SESSION['user'])){
         <div class="row">
             <div class="col-lg-3">
                 <div class="list-group">
-                    <a href="" class="list-group-item list-group-item bg-dark text-white shadow">Categories:</a>
-                    <a href="" class="list-group-item list-group-item-action">Technology</a>
-                    <a href="" class="list-group-item list-group-item-action">Movies</a>
-                    <a href="" class="list-group-item list-group-item-action">lifstyle</a>
-                    <a href="" class="list-group-item list-group-item-action">Fitness</a>
+                    <a href="" class="list-group-item list-group-item bg-dark text-white shadow  border border-dark  ">Categories:</a>
+                    <a href="" class="list-group-item list-group-item-action border border-success">Technology</a>
+                    <a href="" class="list-group-item list-group-item-action border border-success">Movies</a>
+                    <a href="" class="list-group-item list-group-item-action border border-success">lifstyle</a>
+                    <a href="" class="list-group-item list-group-item-action border border-success">Fitness</a>
                 </div>
             </div>
             <div class="col-lg-9">
@@ -51,20 +51,19 @@ if(!isset($_SESSION['user'])){
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="card shadow border-primary border">
+                        <div class="card shadow border-primary border small">
                             <div class="card-header bg-primary text-white">Letest Questions</div>
                             <div class="card-body">
                                 <?php 
-                            $calling_letest = $datawork->getData("select * from questions");
+                            $calling_letest = $datawork->getData("select * from questions JOIN account ON questions.q_by = account.id");
                             foreach($calling_letest as $data):
                                 ?>
 
                                 <div class="row">
-                                    <div class="col">Raja kumar</div>
-                                    <div class="col"><?= $data['q_title'];?></div>
-                                    <div class="col"><?= date("D d M Y",strtotime( $data['q_doc']));?></div>
+                                    <div class="col-2"><?= $data['name'];?></div>
+                                    <div class="col-7"><a href="view.php?id=<?= $data['id']?>" style="text-decoration: none;color:darkviolet;"><?= $data['q_title'];?></a></div>
+                                    <div class="col-3"><?= date("d M Y",strtotime( $data['q_doc']));?></div>
                                 </div>
-                                
                                 
                                 <?php endforeach ; ?>
                             </div>
@@ -72,18 +71,18 @@ if(!isset($_SESSION['user'])){
                     </div>
 
                     <div class="col-lg-6">
-                        <div class="card shadow border border-success">
-                            <div class="card-header bg-success text-white">Unanswered Questions</div>
+                        <div class="card shadow border border-danger small">
+                            <div class="card-header bg-danger text-white">Unanswered Questions</div>
                             <div class="card-body">
                                 <?php 
-                            $calling_letest = $datawork->getData("select * from questions");
+                            $calling_letest = $datawork->getData("select * from questions JOIN account ON questions.q_by = account.id");
                             foreach($calling_letest as $data):
                                 ?>
 
                                 <div class="row">
-                                    <div class="col">Raja kumar</div>
-                                    <div class="col"><?= $data['q_title'];?></div>
-                                    <div class="col"><?= date("D d M Y",strtotime( $data['q_doc']));?></div>
+                                    <div class="col-2"><?= $data['name'];?></div>
+                                    <div class="col-7"><a href="view.php?id=<?= $data['q_id'];?>" style="text-decoration: none;"><?= $data['q_title'];?></a></div>
+                                    <div class="col-3"><?= date("d M Y",strtotime( $data['q_doc']));?></div>
                                 </div>
                                 
                                 

@@ -15,10 +15,11 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expanda-lg navbar-dark bg-info">
+<nav class="navbar navbar-expanda-lg navbar-dark bg-dark">
     <div class="container">
+    <a href="index.php" class="navbar-link" style="text-decoration: none;">Home</a>
         <div class="navbar-brand mx-auto">Login</div>
-        <a href="index.php" class="navbar-link">Home</a>
+        
     </div>
 </nav>
 
