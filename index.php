@@ -1,10 +1,8 @@
 <?php include "include/config.php" ; 
-
+;
 if(!isset($_SESSION['user'])){
     $datawork->redirect('login');
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -20,15 +18,15 @@ if(!isset($_SESSION['user'])){
 <body>
     <?php include "include/header.php" ; ?>
 
-    <div class="container-fulid pd-5 bg-info">
+    <div class="container-fulid pd-5 bg-light">
         <div class="container text-center">
             <h1 class="display-2">Search Any question</h1>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <form action="">
-                        <input type="text" size="50" placeholder="Search here" class="form-control shadow form-control-lg border-dark">
-                        <input type="submit" value="search" class="btn btn-success btn-lg mt-2 ">
-                        <input type="submit" value="View all" class="btn btn-dark btn-lg mt-2 ">
+                    <form action="search.php">
+                        <input type="text" size="50" name="search" placeholder="Search here" class="form-control shadow form-control-lg border-dark">
+                        <input type="submit" value="Find" class="btn btn-success btn-lg mt-2 ">
+                        
                     </form>
                 </div>
             </div>
@@ -61,7 +59,7 @@ if(!isset($_SESSION['user'])){
 
                                 <div class="row">
                                     <div class="col-2"><?= $data['name'];?></div>
-                                    <div class="col-7"><a href="view.php?id=<?= $data['id']?>" style="text-decoration: none;color:darkviolet;"><?= $data['q_title'];?></a></div>
+                                    <div class="col-7"><a href="view.php?id=<?= $data['q_id']?>" style="text-decoration: none;color:darkviolet;"><?= $data['q_title'];?></a></div>
                                     <div class="col-3"><?= date("d M Y",strtotime( $data['q_doc']));?></div>
                                 </div>
                                 

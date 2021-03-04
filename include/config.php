@@ -19,7 +19,7 @@ class Work{
     }
 
     //insert data
-    public function insertData($table,$fields){
+    public function insertData($table,$fields,$page='index'){
         $col = implode(",",array_keys($fields));
         $rows = implode("','",array_values($fields));
 
@@ -28,7 +28,7 @@ class Work{
         if($sql){
 
             $_SESSION['alert'] = "data inserted successfully";
-            $this -> redirect();
+            $this -> redirect($page);
         }
         else{
             //fail
@@ -48,16 +48,17 @@ class Work{
     public function getData($query){
 
         $run = $this->connect->query($query);
-
+        $array = [];
         if($run->num_rows > 0){
-            $array = [];
+            
             while($row = $run->fetch_assoc()){
                 $array[] = $row;
             }
             return $array;
         }
         else{
-            echo "No record found";
+            echo "<small class='text-muted p-3'>No record found</small>";
+            return $array;
         }
         
     }

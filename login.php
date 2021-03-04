@@ -40,6 +40,7 @@
                             <div class="mb-2">
                                 <input type="submit" name="login" value="Login" class="btn btn-success w-100">
                             </div>
+                            <a href="signup.php" style="float: right; text-decoration:none;" >Signup..</a>
                         </form>
                         <?php 
                             
